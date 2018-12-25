@@ -1,11 +1,11 @@
 import React from "react"
 import { View, Text, Image, StyleSheet } from "react-native"
 
-const Header = props => {
+const Header = () => {
     return (
         <View style={styles.headerContainer}>
             <Image style={styles.headerImage} source={require("../../assets/headerIcon.gif")} />
-            <Text style={styles.headerText}>{props.headerText}</Text>
+            <Text style={styles.headerText}>Emotions Recognition</Text>
         </View>
     )
 }
