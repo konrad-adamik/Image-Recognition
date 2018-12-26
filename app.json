@@ -23,7 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.konradadamik.emotionsrecognition"
     },
+    "android": {
+      "package": "com.konradadamik.emotionsrecognition"
+    }
   }
 }
