@@ -1,6 +1,6 @@
 import React from "react"
-import { View, Text, Image, StyleSheet, Dimensions, FlatList, ProgressBarAndroid } from "react-native"
-import EmptyListComponent from "./EmptyListComponent"
+import { View, Image, Dimensions } from "react-native"
+import ResultList from "./ResultListComponent"
 import axios from "axios"
 
 export default class ImagePickerScreen extends React.Component {
@@ -59,106 +59,17 @@ export default class ImagePickerScreen extends React.Component {
 
     }
 
-    renderHeader = () => {
-        return (
-            <View
-              style={styles.listHeaderStyle}
-            >
-                <Text style={styles.textStyle}>Result Name</Text>
-                <Text style={{
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    alignItems: "center",
-                    paddingLeft: 5,
-                }}>Probability</Text>
-            </View>
-        )
-    }
-
-    renderSeparator = () => {
-        return (
-          <View
-            style={styles.seperatorStyle}
-          />
-        )
-      }
-
     render() {
       return (
-        <View style={styles.listStyle} >
+        <View>
           <Image 
                 style={{width: this.width, height: this.imageHeight}} 
                 source={{uri: this.props.photoURI}} 
                 resizeMode="cover"
                 resizeMethod="scale"
             />
-            <FlatList
-                style={styles.listStyle}
-                ListEmptyComponent={EmptyListComponent}
-                ItemSeparatorComponent={this.renderSeparator}
-                ListHeaderComponent={this.renderHeader}
-                data={this.state.resultData}
-                renderItem={({item}) => (
-                      <View style={styles.listItemStyle}>
-                        <Text style={styles.textStyle}>{item.name + ": "}</Text>
-                        <ProgressBarAndroid
-                            style={styles.progressBarStyle}
-                            styleAttr="Horizontal" 
-                            color="#2196F3"
-                            progress={item.value}
-                            indeterminate={false}
-                        />
-                        <Text style={styles.textPercentStyle}>
-                            {(this.truncateProbability((item.value * 100 + "")) + " %")}
-                        </Text>
-                      </View>
-                  )}
-            />
+            <ResultList resultData={this.state.resultData} />
         </View>
       );
     }
 }
-
-const styles = StyleSheet.create({
-    listStyle: {
-        backgroundColor: "white"
-    },
-    listItemStyle: {
-        alignItems: "center",
-        flexDirection: "row",
-        height: (Dimensions.get("window").height - Dimensions.get("window").width * 9 / 16 - 80) / 6,
-        paddingLeft: 5
-    },
-    listHeaderStyle: {
-        alignItems: "center",
-        flexDirection: "row",
-        height: (Dimensions.get("window").height - Dimensions.get("window").width * 9 / 16 - 80) / 6,
-        paddingLeft: 5,
-        borderBottomWidth: 2,
-        borderBottomColor: "#CED0CE",
-    },
-    seperatorStyle: {
-        height: 1,
-        width: "97%",
-        backgroundColor: "#CED0CE",
-        marginLeft: "1%"
-    },
-    progressBarStyle: {
-        marginLeft: 10,
-        width: Dimensions.get("window").width * 0.49,
-    },
-    textStyle: {
-        borderRightWidth: 1,
-        borderRightColor: "#CED0CE",
-        fontSize: 14,
-        fontWeight: "bold",
-        height: "100%",
-        textAlign: "center",
-        textAlignVertical: "center",
-        width: Dimensions.get("window").width * 0.27,
-    },
-    textPercentStyle: {
-        width: Dimensions.get("window").width * 0.20,
-        paddingLeft: 10,
-    }
-  });

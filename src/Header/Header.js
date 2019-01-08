@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <View style={styles.headerContainer}>
             <Image style={styles.headerImage} source={require("../../assets/headerIcon.gif")} />
-            <Text style={styles.headerText}>Emotions Recognition</Text>
+            <Text style={styles.headerText}>Image Recognition</Text>
         </View>
     )
 }
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         paddingTop: 25,
-        height: 100,
+        height: 80,
         shadowColor: "#000000",
         shadowOffset: { height: 0, width: 2},
         shadowOpacity: 0.2,
@@ -26,14 +26,14 @@ const styles = StyleSheet.create({
 
     },
     headerText: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: "bold",
         paddingLeft: 10,
     },
     headerImage: {
         alignItems: "center",
-        height: 64,
-        width: 64,
+        height: 48,
+        width: 48,
     }
   });
   

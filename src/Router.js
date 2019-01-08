@@ -7,9 +7,9 @@ import ResultScreen from "./ResultScreen/ResultScreen"
 const RouterComponent = () => {
     return (
         <Router>
-            <Scene key="root" >
-                <Scene key="homeScreen" component={HomeScreen} navBar={Header}  initial />
-                <Scene key="resultScreen" component={ResultScreen} title="Results" />
+            <Scene key="root" navBar={Header} >
+                <Scene key="homeScreen" component={HomeScreen} initial />
+                <Scene key="resultScreen" component={ResultScreen}  />
             </Scene>
         </Router>
     )
