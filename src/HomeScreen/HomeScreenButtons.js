@@ -16,7 +16,6 @@ export default class HomeScreenButtons extends React.Component {
         this.setState({isProcessingPhoto: true})
         let result = await ImagePicker.launchImageLibraryAsync({
           allowsEditing: true,
-          aspect: [4, 3],
           base64: true,
         });
         this.setState({isProcessingPhoto: false})
@@ -32,7 +31,6 @@ export default class HomeScreenButtons extends React.Component {
         this.setState({isProcessingPhoto: true})
         let result = await ImagePicker.launchCameraAsync({
             allowsEditing: true,
-            aspect: [4, 3],
             base64: true,
           });
         if(!result.cancelled) {

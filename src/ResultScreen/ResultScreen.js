@@ -38,7 +38,7 @@ export default class ImagePickerScreen extends React.Component {
         formData.append('data', base64image);
 
         axios({
-        url: `http://192.168.1.200:5000/api/identify`,
+        url: `http://192.168.8.100:5000/api/identify`,
         method: 'POST',
         data: formData,
         headers: {
@@ -65,7 +65,7 @@ export default class ImagePickerScreen extends React.Component {
           <Image 
                 style={{width: this.width, height: this.imageHeight}} 
                 source={{uri: this.props.photoURI}} 
-                resizeMode="cover"
+                resizeMode="contain"
                 resizeMethod="scale"
             />
             <ResultList resultData={this.state.resultData} />
